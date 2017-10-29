@@ -1,0 +1,29 @@
+.authentiq-button {
+  display: inline-block;
+  //min-height: 40px;
+  padding: 12px 8px 12px 48px;
+  margin-bottom: 16px;
+  border: 0 none;
+  border-radius: 5px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600 !important;
+  letter-spacing: .016em;
+  cursor: pointer;
+  background-color: #895fc0 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  text-align: center;
+
+  background-size: 31px 28px;
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 27' width='30' height='27'%3E%3Cpath id='aq-logo-bg' style='fill:%23fff' d='M30 18.4c0 .7-.4 1.4-.8 1.7l-13.6 7H14L.8 20c-.4 0-.8-1-.8-1.5v-10C0 8 .4 7.3.8 7L14 0c.4-.3 1.2-.3 1.6 0l13.6 7c.4.2.8 1 .8 1.6v9.8z'/%3E%3Cpath id='aq-logo-a' style='fill:%23f05023' d='M11 13.7c0-1.8 1.3-3.3 3-3.3s3 1.5 3 3.3c0 1.8-1.3 3.2-3 3.2s-3-1.7-3-3.5zm11.5 3H22c-.4 0-1-.2-1-.4-.3 0-.5-.4-.5-.8V7.7h-3.2V9c-.5-.5-1-.8-1.7-1-.6-.3-1.5-.5-2.3-.5-1 0-1.7.2-2.4.5-1 .3-1.6.8-2 1.3-.6.6-1 1.2-1 2-.6.7-.7 1.5-.7 2.3 0 1 0 1.7.4 2.4.2.7.6 1.4 1 2 .6.5 1.2 1 2 1.3.6.3 1.4.5 2.3.5 1 0 1.8-.2 2.5-.6.7-.3 1.2-.8 1.7-1.5.3.6.7 1 1.3 1.5.5.4 1 .6 1.8.6.5 0 1 0 1.5-.2l.5-.2v-2.8z'/%3E%3C/svg%3E") !important;
+
+  &:hover,
+  &:focus {
+    background-color: #6a3fa1 !important;
+    color: #fff !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}

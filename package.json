@@ -1,0 +1,41 @@
+{
+  "name": "authentiq-wordpress",
+  "title": "Authentiq WordPress plugin",
+  "description": "Authentiq",
+  "version": "1.0.0",
+  "homepage": "https://www.authentiq.com",
+  "repository": "https://github.com/authentiq/wordpress",
+  "author": {
+    "name": "Chris Ziogas",
+    "email": "chris@authentiq.com",
+    "url": "https://www.authentiq.com"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/AuthentiqID/wordpress/blob/master/LICENSE"
+  },
+  "devDependencies": {
+    "gettext-parser": "~1.3.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "4.0.0",
+    "gulp-header": "~1.8.9",
+    "gulp-jshint": "~2.0.4",
+    "gulp-livereload": "~3.8.1",
+    "gulp-minify-css": "~1.2.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "~1.1.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "~3.0.0",
+    "gulp-util": "~3.0.8",
+    "gulp-zip": "~4.0.0",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "node-gettext": "~2.0.0",
+    "replace-ext": "1.0.0",
+    "run-sequence": "~2.1.0",
+    "through2": "~2.0.3",
+    "tiny-lr": "1.0.5"
+  },
+  "keywords": []
+}

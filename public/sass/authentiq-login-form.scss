@@ -1,0 +1,81 @@
+.authentiq-login {
+  .authentiq-form-wrapper {
+    text-align: center;
+  }
+
+  .other-methods {
+    font-size: 13px;
+
+    a {
+      text-decoration: none;
+      color: #666;
+
+      &:hover {
+        color: #2ea2cc;
+      }
+    }
+  }
+
+  /* hide WP login form */
+  &.wp-passwords-hidden {
+    #login {
+      #loginform {
+        > :not(.authentiq-form-wrapper) {
+          display: none;
+        }
+      }
+    }
+
+    #login #nav {
+      display: none;
+    }
+  }
+}
+
+.woocommerce-account {
+  #customer-login-authentiq {
+    /* hide WP login form */
+    &.wp-passwords-hidden {
+      & ~ #customer_login,
+      & ~ h2,
+      & ~ .woocommerce-form-login {
+        display: none;
+      }
+    }
+  }
+}
+
+.woocommerce-checkout {
+  .authentiq-form-wrapper {
+    display: table;
+
+    > * {
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    .authentiq-button {
+      white-space: nowrap;
+    }
+
+    .desc {
+      padding-left: 1rem;
+    }
+  }
+
+  //  .woocommerce-form-login {
+  //    /* hide WP login form */
+  //    .wp-passwords-hidden {
+  //      & ~ :not(.authentiq-form-wrapper) {
+  //        display: none;
+  //      }
+  //    }
+  //  }
+  //
+  //  .authentiq-form-wrapper {
+  //    .other-methods {
+  //      display: inline;
+  //      margin-left: 1rem;
+  //    }
+  //  }
+}
