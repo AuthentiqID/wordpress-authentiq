@@ -2,7 +2,7 @@
 Contributors: authentiq, stannie, ziogaschr
 Tags: passwordless, two-factor, two factor, 2 step authentication, 2 factor, 2FA, admin, ios, android, authentication, encryption, harden, iphone, log in, login, mfa, mobile, multifactor, multi factor, oauth, password, passwords, phone, secure, security, smartphone, single sign on, ssl, sso, strong authentication, tfa, two factor authentication, two step, wp-admin, wp-login, xmlrpc, xml-rpc, clef
 Requires at least: 4.6
-Tested up to: 4.6
+Tested up to: 4.8.2
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,6 +28,8 @@ Features:
 *   Optionally request social accounts, address, and (verified) phone numbers too.
 *   Remote sign out: your users can sign out with their Authentiq ID app, even when they left their session signed in on another computer.
 *   Existing users can activate Authentiq in their profile page for convenience or additional security.
+
+You can check our [demo site](https://wordpress.demos.authentiq.io/).
 
 
 = Widget =
