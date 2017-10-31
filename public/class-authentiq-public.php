@@ -131,12 +131,18 @@ class Authentiq_Public
 			return;
 		}
 
+		$button_text = __('Sign in or register', AUTHENTIQ_LANG);
+		if (!$this->options->is_wp_registration_enabled()) {
+			$button_text = __('Sign in', AUTHENTIQ_LANG);
+		}
+
 		$allow_classic_wp_login = $this->options->allow_classic_wp_login();
 		$authorize_url = Authentiq_Provider::get_authorize_url();
 
 		echo Authentiq_Helpers::render_template('public/partials/login-form.php', array(
 			'authorize_url' => $authorize_url,
 			'allow_classic_wp_login' => $allow_classic_wp_login,
+			'button_text' => $button_text,
 		));
 	}
 
@@ -164,9 +170,14 @@ class Authentiq_Public
 			return $this->render_logged_in_state($sign_out_text);
 		}
 
+		$button_fallback_text = __('Sign in or register', AUTHENTIQ_LANG);
+		if (!$this->options->is_wp_registration_enabled()) {
+			$button_fallback_text = __('Sign in', AUTHENTIQ_LANG);
+		}
+
 		return Authentiq_Helpers::render_template('public/partials/authentiq-button.php', array(
 			'authorize_url' => $authorize_url,
-			'button_text' => !empty($sign_in_text) ? $sign_in_text : __('Sign in or register', AUTHENTIQ_LANG),
+			'button_text' => !empty($sign_in_text) ? $sign_in_text : $button_fallback_text,
 		));
 	}
 

@@ -27,10 +27,6 @@
 
         <h2><?php esc_html_e('Client', AUTHENTIQ_LANG); ?></h2>
 
-        <p class="description">
-			<?php _e('Authentiq client details, retrieved from <a href="https://dashboard.authentiq.com">Authentiq Dashboard</a>.', AUTHENTIQ_LANG) ?>
-        </p>
-
 		<?php if (!$this->options->is_configured()) : ?>
             <div class="authentiq-configuration-warning" style="background: #fff; margin-top: 15px; padding: 1px 12px;">
 
@@ -89,6 +85,11 @@ TXT
 				} ?>
 
             </div>
+
+		<?php else: ?>
+            <p class="description">
+				<?php _e('Please refer to the <a href="https://dashboard.authentiq.com">Authentiq Dashboard</a> to change your client’s configuration.', AUTHENTIQ_LANG) ?>
+            </p>
 		<?php endif; ?>
 
         <table class="form-table">
