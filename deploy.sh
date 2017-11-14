@@ -104,8 +104,21 @@ fi
 
 if git show-ref --tags --quiet --verify -- "refs/tags/$PLUGINVERSION"
  then
-   echo "Version $PLUGINVERSION already exists as git tag. Exiting....";
-   exit 1;
+    printf "Are you sure you want to update existing tag at SNV (y|n)? "
+    read -e input
+    PROCEED="${input:-y}"
+    echo
+
+    # Allow user cancellation
+    if [ "$PROCEED" != "y" ]; then echo "Version $PLUGINVERSION already exists as git tag. Exiting...."; echo "Aborting..."; exit 1; fi
+
+    UPDATEEXISTINGTAG=1
+
+    # delete local tag
+    git tag -d $PLUGINVERSION
+    # delete remote tag (eg, GitHub version too)
+    git push origin :refs/tags/$PLUGINVERSION
+
  else
    echo "Git version does not exist. Let's proceed..."
 fi
@@ -185,7 +198,9 @@ svn commit --username=$SVNUSER -m "Updating assets"
 echo "Creating new SVN tag and committing it"
 cd $SVNPATH
 svn update --quiet $SVNPATH/tags/$PLUGINVERSION
-# svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION
+
+if [ ! -z ${UPDATEEXISTINGTAG-} ]; then svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION; fi
+
 svn copy --quiet trunk/ tags/$PLUGINVERSION/
 # Remove assets and trunk directories from tag directory
 svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/.wordpress-org
