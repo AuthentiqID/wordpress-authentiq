@@ -1,6 +1,7 @@
 /.* export-ignore
 CHANGELOG.txt export-ignore
 gulpfile.js export-ignore
+deploy.sh export-ignore
 package.json export-ignore
 package-lock.json export-ignore
 yarn.lock export-ignore
