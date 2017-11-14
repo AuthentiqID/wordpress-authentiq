@@ -129,6 +129,7 @@ echo "Ignoring GitHub specific files"
 svn propset svn:ignore "README.md
 Thumbs.db
 deploy.sh
+yarn.lock
 .github/*
 .git
 .gitattributes
