@@ -1,1 +1,10 @@
 == Changelog ==
+
+= 1.0.1 - 2017-11-14 =
+
+* Tweak - Support WordPress 4.9.
+* Tweak - Make the Authentiq button in frontend a bit smaller.
+
+= 1.0.0 - 2017-10-29 =
+
+* Initial public release.
