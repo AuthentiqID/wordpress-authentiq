@@ -118,7 +118,7 @@ git tag -a "$PLUGINVERSION" -m "Tagging version $PLUGINVERSION"
 
 echo "Pushing git master to origin, with tags"
 git push origin master
-git push origin master --tags
+git push origin master --tags --follow-tags
 
 echo
 echo "Creating local copy of SVN repo trunk ..."
