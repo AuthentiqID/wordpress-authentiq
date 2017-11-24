@@ -3,7 +3,7 @@ Contributors: authentiq, stannie, ziogaschr
 Tags: passwordless, two-factor, two factor, 2 step authentication, 2 factor, 2FA, admin, ios, android, authentication, encryption, harden, iphone, log in, login, mfa, mobile, multifactor, multi factor, oauth, password, passwords, phone, secure, security, smartphone, single sign on, ssl, sso, strong authentication, tfa, two factor authentication, two step, wp-admin, wp-login, xmlrpc, xml-rpc, clef
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,11 +111,16 @@ Yes, WooCommerce checkout and account pages are supported. In case "Address" and
 
 == Changelog ==
 
+= 1.0.2 - 2017-11-25 =
+
+    * Feature - Add `authentiq_pre_insert_user_data` filter.
+    * Feature - Add `authentiq_redirect_to_after_signin` filter.
+
 = 1.0.1 - 2017-11-14 =
 
-* Tweak - Support WordPress 4.9.
-* Tweak - Make the Authentiq button in frontend a bit smaller.
+    * Tweak - Support WordPress 4.9.
+    * Tweak - Make the Authentiq button in frontend a bit smaller.
 
 = 1.0.0 - 2017-10-29 =
 
-* Initial public release.
+    * Initial public release.

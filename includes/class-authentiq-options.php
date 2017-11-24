@@ -51,6 +51,14 @@ class Authentiq_Options
 			return apply_filters('authentiq_get_option', $default, $key);
 		}
 
+		/**
+		 * Filters Authentiq option value.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string     $value       Option value
+		 * @param string     $key         Option key
+		 */
 		return apply_filters('authentiq_get_option', $options[$key], $key);
 	}
 

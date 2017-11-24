@@ -2,7 +2,7 @@
   "name": "authentiq-wordpress",
   "title": "Authentiq WordPress plugin",
   "description": "Authentiq",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://www.authentiq.com",
   "repository": "https://github.com/authentiq/wordpress",
   "author": {

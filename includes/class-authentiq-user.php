@@ -147,6 +147,29 @@ class Authentiq_User
 		}
 
 		/**
+		 * Filters user data before the record is created or updated.
+		 *
+		 * It only includes data in the wp_users table wp_user, not any user metadata.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param array    $data          {
+		 *                                Values and keys for the user.
+		 *
+		 * @type string    $user_login    The user's login. Only included if $update == false
+		 * @type string    $user_pass     The user's password.
+		 * @type string    $user_email    The user's email.
+		 * @type string    $user_url      The user's url.
+		 * @type string    $user_nickname The user's nickname.
+		 * @type string    $display_name  The user's display name.
+		 * }
+		 *
+		 * @param bool     $update        Whether the user is being updated rather than created.
+		 * @param int|null $id            ID of the user to be updated, or NULL if the user is being created.
+		 */
+		$user_data = apply_filters('authentiq_pre_insert_user_data', $user_data, false, null);
+
+		/**
 		 * Filters if we can create this user
 		 *
 		 * @param bool $allow
@@ -201,6 +224,30 @@ class Authentiq_User
 
 		// Get WP user info from Authentiq userinfo
 		$user_data = Authentiq_User::get_user_data_from_userinfo($userinfo);
+
+		/**
+		 * Filters user data before the record is created or updated.
+		 *
+		 * It only includes data in the wp_users table wp_user, not any user metadata.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param array    $data          {
+		 *                                Values and keys for the user.
+		 *
+		 * @type string    $user_login    The user's login. Only included if $update == false
+		 * @type string    $user_pass     The user's password.
+		 * @type string    $user_email    The user's email.
+		 * @type string    $user_url      The user's url.
+		 * @type string    $user_nickname The user's nickname.
+		 * @type string    $display_name  The user's display name.
+		 * }
+		 *
+		 * @param bool     $update        Whether the user is being updated rather than created.
+		 * @param int|null $id            ID of the user to be updated, or NULL if the user is being created.
+		 */
+		$user_data = apply_filters('authentiq_pre_insert_user_data', $user_data, true, $user->data->ID);
+
 		$user_data['ID'] = $user->data->ID;
 
 		// Update the WP user
@@ -296,6 +343,7 @@ class Authentiq_User
 
 	public static function get_authentiq_id($user_id) {
 		global $wpdb;
+
 		return get_user_meta($user_id, $wpdb->prefix . 'authentiq_id', true);
 	}
 
@@ -311,6 +359,7 @@ class Authentiq_User
 
 	public static function get_userinfo($user_id) {
 		global $wpdb;
+
 		return get_user_meta($user_id, $wpdb->prefix . 'authentiq_obj', true);
 	}
 

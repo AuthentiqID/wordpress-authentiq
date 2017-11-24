@@ -20,7 +20,7 @@ define('AUTHENTIQ_PLUGIN_FILE', __FILE__);
 define('AUTHENTIQ_PLUGIN_BASENAME', plugin_basename( __FILE__ ));
 define('AUTHENTIQ_PLUGIN_DIR', trailingslashit(plugin_dir_path(__FILE__)));
 define('AUTHENTIQ_PLUGIN_URL', trailingslashit(plugin_dir_url(__FILE__)));
-define('AUTHENTIQ_VERSION', '1.0.1');
+define('AUTHENTIQ_VERSION', '1.0.2');
 define('AUTHENTIQ_NAME', 'authentiq');
 define('AUTHENTIQ_LANG', AUTHENTIQ_NAME);
 

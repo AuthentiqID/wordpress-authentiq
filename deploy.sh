@@ -104,6 +104,7 @@ fi
 
 if git show-ref --tags --quiet --verify -- "refs/tags/$PLUGINVERSION"
  then
+    printf "CAUTION: It's not wise changing released tags."
     printf "Are you sure you want to update existing tag at SNV (y|n)? "
     read -e input
     PROCEED="${input:-y}"

@@ -268,8 +268,10 @@ class Authentiq_Provider
 				$userinfo = $decoded_token;
 			}
 
+			$user = $this->handle_wp_user($userinfo, $data->id_token, $data->access_token);
+
 			// Perform user login to WP
-			if ($this->handle_wp_user($userinfo, $data->id_token, $data->access_token)) {
+			if ($user) {
 				// Default redirect URL for Authentiq
 				$redirect_to = $this->options->get('default_login_redirection', home_url());
 
@@ -279,6 +281,16 @@ class Authentiq_Provider
 				} else if (isset($state_obj['redirect_to']) && !empty($state_obj['redirect_to'])) {
 					$redirect_to = $state_obj['redirect_to'];
 				}
+
+				/**
+				 * Filters Authentiq redirect_to page after a user sign in.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param string  $redirect_to Page where user will be redirected to
+				 * @param WP_User $user        WP_User object
+				 */
+				$redirect_to = apply_filters('authentiq_redirect_to_after_signin', $redirect_to, $user);
 
 				wp_safe_redirect($redirect_to);
 				die();
@@ -448,7 +460,7 @@ class Authentiq_Provider
 	 * @param $id_token
 	 * @param $access_token
 	 *
-	 * @return bool
+	 * @return WP_User|false WP_User object on success, false on failure
 	 * @throws Authentiq_Login_Flow_Validation_Exception
 	 */
 	function handle_wp_user($userinfo, $id_token, $access_token) {
@@ -534,7 +546,7 @@ class Authentiq_Provider
 
 			$this->login_user_to_wp($user, $userinfo, false, $id_token, $access_token);
 
-			return true;
+			return $user;
 
 		} else {
 			try {
@@ -566,7 +578,7 @@ class Authentiq_Provider
 
 				$this->login_user_to_wp($user, $userinfo, true, $id_token, $access_token);
 
-				return true;
+				return $user;
 
 			} catch (Authentiq_User_Exception $e) {
 				throw new Authentiq_Login_Flow_Validation_Exception($e->getMessage());
