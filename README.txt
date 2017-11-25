@@ -113,14 +113,14 @@ Yes, WooCommerce checkout and account pages are supported. In case "Address" and
 
 = 1.0.2 - 2017-11-25 =
 
-    * Feature - Add `authentiq_pre_insert_user_data` filter.
-    * Feature - Add `authentiq_redirect_to_after_signin` filter.
+* Feature - Add `authentiq_pre_insert_user_data` filter.
+* Feature - Add `authentiq_redirect_to_after_signin` filter.
 
 = 1.0.1 - 2017-11-14 =
 
-    * Tweak - Support WordPress 4.9.
-    * Tweak - Make the Authentiq button in frontend a bit smaller.
+* Tweak - Support WordPress 4.9.
+* Tweak - Make the Authentiq button in frontend a bit smaller.
 
 = 1.0.0 - 2017-10-29 =
 
-    * Initial public release.
+* Initial public release.
