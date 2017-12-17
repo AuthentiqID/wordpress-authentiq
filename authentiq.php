@@ -3,7 +3,7 @@
  * Plugin Name:       Authentiq
  * Plugin URI:        https://wordpress.org/plugins/authentiq
  * Description:       Sign in (and sign up) to WordPress sites using the Authentiq ID app. Strong authentication, without the passwords.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            The Authentiq Team
  * Author URI:        https://www.authentiq.com
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@ define('AUTHENTIQ_PLUGIN_FILE', __FILE__);
 define('AUTHENTIQ_PLUGIN_BASENAME', plugin_basename( __FILE__ ));
 define('AUTHENTIQ_PLUGIN_DIR', trailingslashit(plugin_dir_path(__FILE__)));
 define('AUTHENTIQ_PLUGIN_URL', trailingslashit(plugin_dir_url(__FILE__)));
-define('AUTHENTIQ_VERSION', '1.0.2');
+define('AUTHENTIQ_VERSION', '1.0.3');
 define('AUTHENTIQ_NAME', 'authentiq');
 define('AUTHENTIQ_LANG', AUTHENTIQ_NAME);
 

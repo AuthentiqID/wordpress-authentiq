@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.0.3 - 2017-12-17 =
+
+* Feature - Stop updating username and display_name on sub-sequent signins.
+* Feature - Add settings for defining a specific redirect URL after signin.
+
 = 1.0.2 - 2017-11-25 =
 
 * Feature - Add `authentiq_pre_insert_user_data` filter.
