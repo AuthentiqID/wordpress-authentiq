@@ -115,7 +115,8 @@ class Authentiq_Options
 			'filter_user_domains_condition' => 1,
 
 			// Default redirect_to after a sign-in for Authentiq plugin
-			'default_login_redirection' => home_url(),
+			'default_login_redirection' => '',
+			'default_login_redirection_applies_to' => 'all',
 
 			// Used for showing messages in the admin area
 			'deferred_admin_notices' => array(),

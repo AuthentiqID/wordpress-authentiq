@@ -101,7 +101,6 @@ TXT
                 <td>
                     <input type="text" name="authentiq_settings[client_id]" id="authentiq_settings[client_id]"
                            value="<?php echo esc_attr($this->options->get('client_id')); ?>" class="regular-text">
-
                 </td>
             </tr>
             <tr>
@@ -113,7 +112,6 @@ TXT
                            id="authentiq_settings[client_secret]"
                            value="<?php echo esc_attr($this->options->get('client_secret')); ?>"
                            class="regular-text">
-
                 </td>
             </tr>
             <tr>
@@ -215,12 +213,34 @@ TXT
                     </label>
                 </td>
             </tr>
-            </tbody>
-        </table>
 
-        <h2><?php esc_html_e('Domain filter', AUTHENTIQ_LANG) ?></h2>
-        <table class="form-table">
-            <tbody>
+            <tr>
+                <th scope="row">
+                    <label for="authentiq_settings[default_login_redirection]"><?php esc_html_e('Page after login', AUTHENTIQ_LANG) ?></label>
+                </th>
+                <td valign="center">
+                    <input type="text" name="authentiq_settings[default_login_redirection]"
+                           id="authentiq_settings[default_login_redirection]"
+                           value="<?php echo esc_attr($this->options->get('default_login_redirection')); ?>"
+                           placeholder="<?php esc_html_e('no redirect', AUTHENTIQ_LANG) ?>"
+                           class="regular-text">
+
+					<?php esc_html_e('for', AUTHENTIQ_LANG) ?>
+
+                    <?php $default_login_redirection_applies_to = $this->options->get('default_login_redirection_applies_to'); ?>
+
+                    <label for="authentiq_settings[default_login_redirection_applies_to]">
+                        <select name="authentiq_settings[default_login_redirection_applies_to]"
+                                id="authentiq_settings[default_login_redirection_applies_to]">
+                            <option value="all" <?php selected($default_login_redirection_applies_to, 'all'); ?>>
+                                <?php esc_html_e('All users', AUTHENTIQ_LANG) ?>
+                            </option>
+                            <?php wp_dropdown_roles($default_login_redirection_applies_to); ?>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+
             <tr>
                 <th scope="row"><label
                             for="authentiq_settings[filter_user_domains]"><?php esc_html_e('Domains to filter', AUTHENTIQ_LANG) ?></label>

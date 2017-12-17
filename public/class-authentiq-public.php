@@ -190,6 +190,8 @@ class Authentiq_Public
 	}
 
 	function render_logged_in_state($sign_out_text = null) {
+		global $wp;
+
 		if (!$this->options->is_configured()) {
 			$msg = __('Please visit the Authentiq plugin settings and configure the client.', AUTHENTIQ_LANG);
 			$msg = '<p class="message">' . $msg . '</p>';
@@ -197,7 +199,7 @@ class Authentiq_Public
 			return $msg;
 		}
 
-		$redirect_to = get_permalink();
+		$redirect_to = home_url(add_query_arg(array(),$wp->request));
 		$logout_url = wp_logout_url($redirect_to);
 
 		return Authentiq_Helpers::render_template('public/partials/logged-in-state.php', array(

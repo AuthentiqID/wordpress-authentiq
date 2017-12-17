@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: authentiq\n"
-"POT-Creation-Date: 2017-10-31 23:37+0200\n"
-"PO-Revision-Date: 2017-10-31 23:37+0200\n"
+"POT-Creation-Date: 2017-12-17 12:02+0200\n"
+"PO-Revision-Date: 2017-12-17 12:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: Authentiq team <hello@authentiq.com>\n"
 "Language: en_GB\n"
@@ -57,92 +57,104 @@ msgstr ""
 msgid "Client ID"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:109
+#: admin/partials/authentiq-settings.php:108
 msgid "Client Secret"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:121
+#: admin/partials/authentiq-settings.php:119
 msgid "Requested scopes"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:123
+#: admin/partials/authentiq-settings.php:121
 msgid "Additional scopes requested from Authentiq ID on user sign in."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:132
+#: admin/partials/authentiq-settings.php:130
 #: admin/partials/authentiq-user-profile.php:43
 msgid "Phone number"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:141
+#: admin/partials/authentiq-settings.php:139
 #: admin/partials/authentiq-user-profile.php:58
 msgid "Address"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:151
+#: admin/partials/authentiq-settings.php:149
 #: admin/partials/authentiq-user-profile.php:69
 msgid "Twitter"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:161
+#: admin/partials/authentiq-settings.php:159
 #: admin/partials/authentiq-user-profile.php:82
 msgid "Facebook"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:171
+#: admin/partials/authentiq-settings.php:169
 msgid "Linkedin"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:179
+#: admin/partials/authentiq-settings.php:177
 msgid "Functionality"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:184
+#: admin/partials/authentiq-settings.php:182
 msgid "Classic WordPress Login"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:192
+#: admin/partials/authentiq-settings.php:190
 msgid "Allow"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:200
+#: admin/partials/authentiq-settings.php:198
 msgid "all users"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:201
+#: admin/partials/authentiq-settings.php:199
 msgid "users without Authentiq ID"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:204
+#: admin/partials/authentiq-settings.php:202
 msgid "to sign in with username and password."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:214
+#: admin/partials/authentiq-settings.php:212
 msgid ""
 "Skip the WordPress login page, and proceed directly to Authentiq sign in."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:221
-msgid "Domain filter"
+#: admin/partials/authentiq-settings.php:219
+msgid "Page after login"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:226
-msgid "Domains to filter"
+#: admin/partials/authentiq-settings.php:225
+msgid "no redirect"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:235
-msgid "Only"
+#: admin/partials/authentiq-settings.php:228
+msgid "for"
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:236
+msgid "All users"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:246
+msgid "Domains to filter"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:255
+msgid "Only"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:256
 msgid "No"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:239
+#: admin/partials/authentiq-settings.php:259
 msgid "Users from the following domains are allowed."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:280
+#: admin/partials/authentiq-settings.php:300
 #: admin/partials/authentiq-user-profile.php:135
 msgid "Please try again."
 msgstr ""
@@ -183,89 +195,89 @@ msgstr ""
 msgid "settings page"
 msgstr ""
 
-#: includes/class-authentiq-provider.php:219
+#: includes/class-authentiq-provider.php:220
 msgid ""
 "Error: Your Authentiq Client ID has not set in the Authentiq plugin settings."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:223
+#: includes/class-authentiq-provider.php:224
 msgid ""
 "Error: Your Authentiq Client Secret has not set in the Authentiq plugin "
 "settings."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:251
+#: includes/class-authentiq-provider.php:252
 msgid "Error: There was an issue decoding the id_token."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:287
-#: includes/class-authentiq-provider.php:305
+#: includes/class-authentiq-provider.php:314
+#: includes/class-authentiq-provider.php:332
 msgid "Failed to login using Authentiq."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:292
+#: includes/class-authentiq-provider.php:319
 msgid ""
 "Error: the Client Secret configured on the Authentiq plugin is wrong. Make "
 "sure to copy the right one from the Authentiq dashboard."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:424
+#: includes/class-authentiq-provider.php:451
 #, php-format
 msgid "This email domain (%s) is not allowed by site administrator."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:433
+#: includes/class-authentiq-provider.php:460
 #, php-format
 msgid "This email domain (%s) is not whitelisted by site administrator."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:465
+#: includes/class-authentiq-provider.php:492
 msgid "Please set an email at AuthentiqID App."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:470
+#: includes/class-authentiq-provider.php:497
 msgid "Please verify the email used at AuthentiqID App."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:495
+#: includes/class-authentiq-provider.php:522
 msgid "This Authentiq ID is already linked to another WordPress user."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:503
+#: includes/class-authentiq-provider.php:530
 msgid "Current WordPress user is already linked with another Authentiq ID."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:549
+#: includes/class-authentiq-provider.php:576
 msgid "Failed to create WordPress user"
 msgstr ""
 
-#: includes/class-authentiq-provider.php:555
+#: includes/class-authentiq-provider.php:582
 msgid "User registration is not allowed by site adminitrator."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:644
-#: includes/class-authentiq-provider.php:664
+#: includes/class-authentiq-provider.php:671
+#: includes/class-authentiq-provider.php:691
 msgid "Passwords have been disabled. Try to login with Authentiq."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:658
+#: includes/class-authentiq-provider.php:685
 msgid ""
 "You have already linked your account with Authentiq ID. Please use Authentiq "
 "ID to sign in."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:726
+#: includes/class-authentiq-provider.php:753
 msgid ""
 "The Authentiq state parameter can not be verified. This may be due to this "
 "page being cached by another WordPress plugin. Please refresh your page and "
 "try again."
 msgstr ""
 
-#: includes/class-authentiq-user.php:136
+#: includes/class-authentiq-user.php:128
 msgid "Email is required by your site administrator."
 msgstr ""
 
-#: includes/class-authentiq-user.php:198
+#: includes/class-authentiq-user.php:216
 msgid "No user set to be updated."
 msgstr ""
 
@@ -292,7 +304,7 @@ msgid "Link your account"
 msgstr ""
 
 #: includes/class-authentiq-widget.php:50
-#: includes/class-authentiq-widget.php:144
+#: includes/class-authentiq-widget.php:146
 #: public/partials/logged-in-state.php:3
 msgid "Sign out"
 msgstr ""
@@ -314,7 +326,7 @@ msgid "Sign out text:"
 msgstr ""
 
 #: public/class-authentiq-public.php:112 public/class-authentiq-public.php:151
-#: public/class-authentiq-public.php:194
+#: public/class-authentiq-public.php:196
 msgid "Please visit the Authentiq plugin settings and configure the client."
 msgstr ""
 

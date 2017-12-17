@@ -136,7 +136,9 @@ class Authentiq_Widget extends WP_Widget
 	}
 
 	public function get_logged_in_template($instance) {
-		$redirect_to = get_permalink();
+		global $wp;
+
+		$redirect_to = home_url(add_query_arg(array(), $wp->request));
 		$logout_url = wp_logout_url($redirect_to);
 
 		return Authentiq_Helpers::render_template('public/partials/logged-in-state.php', array(

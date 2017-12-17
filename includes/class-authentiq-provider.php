@@ -59,6 +59,7 @@ class Authentiq_Provider
 	}
 
 	public static function get_authorize_url($extra_scopes = array()) {
+		global $wp;
 
 		$options = Authentiq_Options::Instance();
 
@@ -93,7 +94,7 @@ class Authentiq_Provider
 		);
 
 		// Pass redirect_to with state, in order we can redirect back after sign-in
-		$redirect_to = get_permalink();
+		$redirect_to = home_url(add_query_arg(array(), $wp->request));
 		if (!empty($redirect_to)) {
 			$state_obj['redirect_to'] = $redirect_to;
 		}
@@ -272,14 +273,28 @@ class Authentiq_Provider
 
 			// Perform user login to WP
 			if ($user) {
-				// Default redirect URL for Authentiq
-				$redirect_to = $this->options->get('default_login_redirection', home_url());
+				// check if a redirect URL is set and user role meets the condition to redirect the page
+				$default_login_redirection_applies_to = $this->options->get('default_login_redirection_applies_to');
+				if ($default_login_redirection_applies_to === 'all'
+					|| in_array($default_login_redirection_applies_to, (array)$user->roles)) {
+					$redirect_to = $this->options->get('default_login_redirection');
+				}
 
-				if (isset($_REQUEST['redirect_to']) && !empty($_REQUEST['redirect_to'])) {
-					$redirect_to = $_REQUEST['redirect_to'];
+				if (empty($redirect_to)) {
+					// Default redirect URL to frontend home page
+					$redirect_to = home_url();
 
-				} else if (isset($state_obj['redirect_to']) && !empty($state_obj['redirect_to'])) {
-					$redirect_to = $state_obj['redirect_to'];
+					// if user is admin, then move to the admin area
+					if (is_super_admin($user->ID)) {
+						$redirect_to = admin_url();
+					}
+
+					if (isset($_REQUEST['redirect_to']) && !empty($_REQUEST['redirect_to'])) {
+						$redirect_to = $_REQUEST['redirect_to'];
+
+					} else if (isset($state_obj['redirect_to']) && !empty($state_obj['redirect_to'])) {
+						$redirect_to = $state_obj['redirect_to'];
+					}
 				}
 
 				/**
