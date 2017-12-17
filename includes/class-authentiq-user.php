@@ -20,59 +20,54 @@ class Authentiq_User
 	 *
 	 * @return array
 	 */
-	private static function get_user_data_from_userinfo($userinfo) {
-		$email = null;
+	private static function get_user_data_from_userinfo($userinfo, $update = false) {
+		// Create the user data array for updating WP user info
+		$userdata = array();
+
 		if (isset($userinfo->email) && is_email($userinfo->email)) {
 			$email = sanitize_email($userinfo->email);
+			$userdata['user_email'] = $email;
 		}
-
-		$first_name = null;
-		$last_name = null;
-		$user_name = null;
-		$display_name = null;
 
 		// Try to get username from Authentiq ID, when set
 		if (isset($userinfo->preferred_username)) {
-			$user_name = $userinfo->preferred_username;
-			$display_name = $user_name;
+			$preferred_username = trim($userinfo->preferred_username);
+
+			// only set nickname on user creation
+			if (!$update) {
+				$userdata['nickname'] = $preferred_username;
+			}
+
+			// default user_login is the $preferred_username
+			$userdata['user_login'] = $preferred_username;
 		}
 
-		if (!$display_name && isset($userinfo->name)) {
-			$display_name = $userinfo->name;
+		// if no user_login set so far, try to set one using the email
+		if (!isset($userdata['user_login']) && $userdata['user_email']) {
+			$email_parts = explode('@', $userdata['user_email']);
+			$userdata['user_login'] = $email_parts[0];
 		}
 
 		if (isset($userinfo->given_name)) {
-			$first_name = $userinfo->given_name;
+			$first_name = trim($userinfo->given_name);
+			$userdata['first_name'] = $first_name;
 
-			if (!$user_name) $user_name = strtolower($first_name);
+			// if no user_login set, then use the first_name
+			$userdata['user_login'] = !empty($userdata['user_login']) ? $userdata['user_login'] : strtolower($first_name);
 		}
 
 		if (isset($userinfo->family_name)) {
-			$last_name = $userinfo->family_name;
+			$userdata['last_name'] = $userinfo->family_name;
 		}
 
 		// WP doesn't allow user_login to contain non english chars
 		// as a fallback remove non english chars, so as email name can be used
 		// with //translit you get a meaningful conversion to ASCII (e.g. ß -> ss)
-		$user_name = iconv('UTF-8', 'ASCII//TRANSLIT', $user_name);
-
-		// if no username set so far, try to set one using the email
-		if (!$user_name) {
-			$email_parts = explode('@', $email);
-			$user_name = $email_parts[0];
+		if ($userdata['user_login']) {
+			$userdata['user_login'] = iconv('UTF-8', 'ASCII//TRANSLIT', $userdata['user_login']);
 		}
 
-		// Create the user data array for updating WP user info
-		$user_data = array(
-			'user_email' => trim($email),
-			'user_login' => trim($user_name),
-			'first_name' => trim($first_name),
-			'last_name' => trim($last_name),
-			'display_name' => trim($display_name),
-			'nickname' => trim($user_name),
-		);
-
-		return $user_data;
+		return $userdata;
 	}
 
 	/**
@@ -82,41 +77,41 @@ class Authentiq_User
 	 *
 	 * @return array
 	 */
-	private static function get_authentiq_userinfo($userinfo) {
-		$user_data = array();
+	private static function get_authentiq_userinfo($userinfo, $update = false) {
+		$userdata = array();
 
 		if (isset($userinfo->phone_number)) {
-			$user_data['phone_number'] = $userinfo->phone_number;
+			$userdata['phone_number'] = trim($userinfo->phone_number);
 
 			if (isset($userinfo->phone_number_verified)) {
-				$user_data['phone_number_verified'] = $userinfo->phone_number_verified;
+				$userdata['phone_number_verified'] = $userinfo->phone_number_verified;
 			}
 
 			if (isset($userinfo->phone_type)) {
-				$user_data['phone_type'] = $userinfo->phone_type;
+				$userdata['phone_type'] = trim($userinfo->phone_type);
 			}
 		}
 
 		if (isset($userinfo->address)) {
-			$user_data['address'] = (array)$userinfo->address;
+			$userdata['address'] = (array)$userinfo->address;
 		}
 
 		$twitter_scope = 'aq:social:twitter';
 		if (isset($userinfo->$twitter_scope)) {
-			$user_data['twitter'] = (array)$userinfo->$twitter_scope;
+			$userdata['twitter'] = (array)$userinfo->$twitter_scope;
 		}
 
 		$facebook_scope = 'aq:social:facebook';
 		if (isset($userinfo->$facebook_scope)) {
-			$user_data['facebook'] = (array)$userinfo->$facebook_scope;
+			$userdata['facebook'] = (array)$userinfo->$facebook_scope;
 		}
 
 		$linkedin_scope = 'aq:social:linkedin';
 		if (isset($userinfo->$linkedin_scope)) {
-			$user_data['linkedin'] = (array)$userinfo->$linkedin_scope;
+			$userdata['linkedin'] = (array)$userinfo->$linkedin_scope;
 		}
 
-		return $user_data;
+		return $userdata;
 	}
 
 	/**
@@ -128,14 +123,14 @@ class Authentiq_User
 	 * @return int|WP_Error
 	 */
 	public static function create_user($userinfo) {
-		// Get WP user info from Authentiq userinfo
-		$user_data = Authentiq_User::get_user_data_from_userinfo($userinfo);
-
 		// FIXME: check if email is required
 		if (empty($userinfo->email)) {
 			$msg = __('Email is required by your site administrator.', AUTHENTIQ_LANG);
 			throw new Authentiq_User_Creation_Failed_Exception($msg);
 		}
+
+		// Get WP user info from Authentiq userinfo
+		$user_data = Authentiq_User::get_user_data_from_userinfo($userinfo);
 
 		// Generate a random password, otherwise account creation fails
 		$password = wp_generate_password(22);
@@ -223,7 +218,7 @@ class Authentiq_User
 		}
 
 		// Get WP user info from Authentiq userinfo
-		$user_data = Authentiq_User::get_user_data_from_userinfo($userinfo);
+		$user_data = Authentiq_User::get_user_data_from_userinfo($userinfo, true);
 
 		/**
 		 * Filters user data before the record is created or updated.
@@ -257,7 +252,7 @@ class Authentiq_User
 		Authentiq_User::update_authentiq_id($user_id, $userinfo);
 
 		// Add Authentiq extra info to WP user profile
-		$authentiq_userinfo = Authentiq_User::get_authentiq_userinfo($userinfo);
+		$authentiq_userinfo = Authentiq_User::get_authentiq_userinfo($userinfo, false);
 		if (!empty($authentiq_userinfo)) {
 			Authentiq_User::update_userinfo($user_id, $authentiq_userinfo);
 		}
