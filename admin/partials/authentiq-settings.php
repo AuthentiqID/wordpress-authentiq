@@ -222,7 +222,7 @@ TXT
                     <input type="text" name="authentiq_settings[default_login_redirection]"
                            id="authentiq_settings[default_login_redirection]"
                            value="<?php echo esc_attr($this->options->get('default_login_redirection')); ?>"
-                           placeholder="<?php esc_html_e('no redirect', AUTHENTIQ_LANG) ?>"
+                           placeholder="<?php esc_html_e('leave empty to return to last page', AUTHENTIQ_LANG) ?>"
                            class="regular-text">
 
 					<?php esc_html_e('for', AUTHENTIQ_LANG) ?>
