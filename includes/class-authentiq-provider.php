@@ -730,7 +730,8 @@ class Authentiq_Provider
 		if (!$override && isset($_COOKIE[self::$cookie_name]) && $_COOKIE[self::$cookie_name]) return;
 
 		$state = wp_generate_password(24, false);
-		@setcookie(self::$cookie_name, $state, (time() + (60 * 30)), '/', '', is_ssl(), true);
+		// store it as a session cookie
+		@setcookie(self::$cookie_name, $state, 0, '/', '', is_ssl(), true);
 		$_COOKIE[self::$cookie_name] = $state;
 
 		return $state;
