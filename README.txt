@@ -2,8 +2,8 @@
 Contributors: authentiq, stannie, ziogaschr
 Tags: passwordless, two-factor, two factor, 2 step authentication, 2 factor, 2FA, admin, ios, android, authentication, encryption, harden, iphone, log in, login, mfa, mobile, multifactor, multi factor, oauth, password, passwords, phone, secure, security, smartphone, single sign on, ssl, sso, strong authentication, tfa, two factor authentication, two step, wp-admin, wp-login, xmlrpc, xml-rpc, clef
 Requires at least: 4.6
-Tested up to: 4.9
-Stable tag: 1.0.4
+Tested up to: 4.9.6
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,8 +54,9 @@ Additionally you can set some extra parameters, which are:
 *   **sign_in_text**: Text shown in Authentiq button, when user **is not** signed in, in order to sign in.
 *   **linking_text**: Text shown in Authentiq button, when user **is** signed in, but is not linked with Authentiq yet, in order to link the user account.
 *   **sign_out_text**: Text shown in Authentiq button, when user **is** signed in and linked with Authentiq, in order to sign out.
+*   **color_scheme**: Authentiq button color scheme. Use a number from 0: default, 1: purple, 2: orange, 3: grey, 4: white.
 
-Example use: `[authentiq_login_button sign_in_text="Login" linking_text="Link your account" sign_out_text="Logout"]`.
+Example use: `[authentiq_login_button sign_in_text="Login" linking_text="Link your account" sign_out_text="Logout" color_scheme=1]`.
 
 You can even place the [shortcode in your template files](http://docs.getshortcodes.com/article/52-using-of-shortcodes-in-template-files).
 
@@ -74,10 +75,6 @@ The manual installation method involves downloading the Authentiq plugin and upl
 
 
 == Frequently Asked Questions ==
-
-= What if I am already using "WordPress Social Login" (WSL) plugin, for Authentiq =
-
-Simply disable Authentiq within the WSL plugin (or the WSL plugin as a whole). Make sure you configure the redirect url correctly and add a backchannel redirect url in the Authentiq dashboard as prompted in the plugins page. Your users will be able to sign in with Authentiq right away.
 
 = How a user can link her account with Authentiq =
 
@@ -98,6 +95,10 @@ When this happens, the WordPress site admin visits the user profile from the Wor
 
 Yes, WooCommerce checkout and account pages are supported. In case "Address" and "Phone number" have been opted-in in Authentiq plugin settings page, they will be pre-filled for the user during checkout.
 
+= What if I am already using "WordPress Social Login" (WSL) plugin, for Authentiq =
+
+Simply disable Authentiq within the WSL plugin (or the WSL plugin as a whole). Make sure you configure the redirect url correctly and add a backchannel redirect url in the Authentiq dashboard as prompted in the plugins page. Your users will be able to sign in with Authentiq right away.
+
 
 == Screenshots ==
 
@@ -110,6 +111,12 @@ Yes, WooCommerce checkout and account pages are supported. In case "Address" and
 
 
 == Changelog ==
+
+= 1.0.5 - 2018-05-20 =
+
+* Feature - Add layout settings.
+* Feature - Add button color scheme settings.
+* Feature - Add GDPR Compliance.
 
 = 1.0.4 - 2018-04-25 =
 

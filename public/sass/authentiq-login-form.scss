@@ -19,16 +19,17 @@
   /* hide WP login form */
   &.wp-passwords-hidden {
     #login {
-      #loginform {
+      #loginform,
+      #registerform {
         > :not(.authentiq-form-wrapper) {
           display: none;
         }
       }
     }
 
-    #login #nav {
-      display: none;
-    }
+    // #login #nav {
+    //   display: none;
+    // }
   }
 }
 

@@ -1,5 +1,7 @@
 #! /bin/bash
 # See https://github.com/GaryJones/wordpress-plugin-git-flow-svn-deploy for instructions and credits.
+#
+# Run the deploy.sh from inside the plugin directory
 
 echo
 echo "WordPress Plugin Git-Flow SVN Deploy v2.0.0-dev"

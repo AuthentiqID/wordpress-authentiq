@@ -65,9 +65,17 @@ class Authentiq_Woocommerce
 		add_action('woocommerce_before_checkout_form', array($this, 'render_login_button_in_woocommerce_checkout'), 12);
 		add_action('woocommerce_before_customer_login_form', array($this, 'render_login_button_in_woocommerce_account'));
 		add_filter('woocommerce_checkout_get_value', array($this, 'woocommerce_checkout_prepopulate_fields_from_authentiq'), 10, 2);
+		add_action('woocommerce_login_form_end', array($this, 'render_login_button_in_woocommerce_checkout'));
 	}
 
 	function render_login_button_in_woocommerce_checkout($checkout) {
+		$layout_signin_form_mode = $this->options->get('layout_signin_form');
+
+		// admin doesn't want Authentiq to handle default WP login form
+		if ($layout_signin_form_mode == 3) {
+			return;
+		}
+
 		$is_user_logged_in = is_user_logged_in();
 		$current_user = wp_get_current_user();
 
@@ -84,21 +92,48 @@ class Authentiq_Woocommerce
 			$this->version,
 			'all');
 
-		$user_must_login = !$checkout->is_registration_enabled() && $checkout->is_registration_required() && !$is_user_logged_in;
-
 		// request `phone` and `address` scopes optionally, for pre-filling checkout form
 		$extra_scopes_to_request = array('phone', 'address');
 		$authorize_url = Authentiq_Provider::get_authorize_url($extra_scopes_to_request);
-		$sign_in_text = $user_must_login ? __('Sign in', AUTHENTIQ_LANG) : __('Get my details', AUTHENTIQ_LANG);
 
-		echo Authentiq_Helpers::render_template('public/partials/woocommerce-checkout.php', array(
+		// on `woocommerce_login_form_end` $checkout is not set
+		$is_login_form = empty($checkout) || !is_object($checkout);
+
+		$is_form_filling = false;
+
+		$template_vars = array(
 			'authorize_url' => $authorize_url,
-			'button_text' => $sign_in_text,
-			'user_must_login' => $user_must_login,
-		));
+			'button_color_scheme' => $this->options->get('button_color_scheme'),
+			'button_text' => __('Sign in', AUTHENTIQ_LANG),
+		);
+
+		if (!$is_login_form) {
+			$is_form_filling = !$checkout->is_registration_required() && !$is_user_logged_in;
+			$template_vars['is_form_filling'] = $is_form_filling;
+			
+			if ($is_form_filling) {
+				$template_vars['button_text'] = __('Get my details', AUTHENTIQ_LANG);
+			}
+		}
+		
+		$text_only_link = !$is_form_filling && !empty($layout_signin_form_mode) && $layout_signin_form_mode == 2;
+		$template_vars['text_only_link'] = $text_only_link;
+		if ($text_only_link) {
+			$layout_signin_form_link_text = $this->options->get('layout_signin_form_link_text');
+			$template_vars['button_text'] = !empty($layout_signin_form_link_text) ? $layout_signin_form_link_text : esc_html__('...or use the Authentiq ID app', AUTHENTIQ_LANG);
+		}
+
+		echo Authentiq_Helpers::render_template('public/partials/woocommerce-checkout.php', $template_vars);
 	}
 
 	function render_login_button_in_woocommerce_account() {
+		$layout_signin_form_mode = $this->options->get('layout_signin_form');
+
+		// admin doesn't want Authentiq to handle default WP login form
+		if ($layout_signin_form_mode == 3) {
+			return;
+		}
+
 		// enqueue login form CSS only when needed
 		wp_enqueue_style($this->plugin_name . '-form',
 			AUTHENTIQ_PLUGIN_URL . 'public/css/authentiq-login-form.min.css',
@@ -121,13 +156,20 @@ class Authentiq_Woocommerce
 			'authorize_url' => $authorize_url,
 			'allow_classic_wp_login' => $allow_classic_wp_login,
 			'show_wp_password_form' => $show_wp_password_form,
+			'button_color_scheme' => $this->options->get('button_color_scheme'),
 		);
 
 		if (get_option('woocommerce_enable_myaccount_registration') !== 'yes') {
 			$template_vars['button_text'] = __('Sign in', AUTHENTIQ_LANG);
 		}
 
-		echo Authentiq_Helpers::render_template('public/partials/woocommerce-account.php', $template_vars);
+		// replace WP login form with Authentiq
+		if ($layout_signin_form_mode == 0) {
+			echo Authentiq_Helpers::render_template('public/partials/woocommerce-account.php', $template_vars);
+		}
+		
+		// for rest layout_signin_form_modes
+		// authentiq button will be handled from the `woocommerce_login_form_end` action hook
 	}
 
 	private function get_woocommerce_country_code_from_authentiq($address_array) {

@@ -98,6 +98,9 @@ class Authentiq
 		// Handles the Authentiq Widget
 		require_once AUTHENTIQ_PLUGIN_DIR . 'includes/class-authentiq-widget.php';
 
+		// Handles personal data export and erase. GDPR related
+		require_once AUTHENTIQ_PLUGIN_DIR . 'includes/personal-data-handler.php';
+
 		// Load JWT 3rd party library
 		require_once AUTHENTIQ_PLUGIN_DIR . 'includes/libraries/php-jwt/JWT.php';
 		require_once AUTHENTIQ_PLUGIN_DIR . 'includes/libraries/php-jwt/BeforeValidException.php';

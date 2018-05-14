@@ -9,22 +9,126 @@
   font-weight: 600 !important;
   font-size: 1em !important;
   cursor: pointer;
-  background-color: #895fc0 !important;
-  color: #fff !important;
+  color: #444 !important;
   text-decoration: none !important;
   text-align: center;
   white-space: nowrap;
+  box-shadow: none !important;
 
   background-size: 1.5em 1.3em;
   background-position: .5em center;
   background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 27' width='30' height='27'%3E%3Cpath id='aq-logo-bg' style='fill:%23fff' d='M30 18.4c0 .7-.4 1.4-.8 1.7l-13.6 7H14L.8 20c-.4 0-.8-1-.8-1.5v-10C0 8 .4 7.3.8 7L14 0c.4-.3 1.2-.3 1.6 0l13.6 7c.4.2.8 1 .8 1.6v9.8z'/%3E%3Cpath id='aq-logo-a' style='fill:%23f05023' d='M11 13.7c0-1.8 1.3-3.3 3-3.3s3 1.5 3 3.3c0 1.8-1.3 3.2-3 3.2s-3-1.7-3-3.5zm11.5 3H22c-.4 0-1-.2-1-.4-.3 0-.5-.4-.5-.8V7.7h-3.2V9c-.5-.5-1-.8-1.7-1-.6-.3-1.5-.5-2.3-.5-1 0-1.7.2-2.4.5-1 .3-1.6.8-2 1.3-.6.6-1 1.2-1 2-.6.7-.7 1.5-.7 2.3 0 1 0 1.7.4 2.4.2.7.6 1.4 1 2 .6.5 1.2 1 2 1.3.6.3 1.4.5 2.3.5 1 0 1.8-.2 2.5-.6.7-.3 1.2-.8 1.7-1.5.3.6.7 1 1.3 1.5.5.4 1 .6 1.8.6.5 0 1 0 1.5-.2l.5-.2v-2.8z'/%3E%3C/svg%3E") !important;
-
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 27' width='30' height='27'%3E%3Cpath id='aq-logo-bg' style='fill:%23f05023' d='M30 18.4c0 .7-.4 1.4-.8 1.7l-13.6 7H14L.8 20c-.4 0-.8-1-.8-1.5v-10C0 8 .4 7.3.8 7L14 0c.4-.3 1.2-.3 1.6 0l13.6 7c.4.2.8 1 .8 1.6v9.8z'/%3E%3Cpath id='aq-logo-a' style='fill:%23fff' d='M11 13.7c0-1.8 1.3-3.3 3-3.3s3 1.5 3 3.3c0 1.8-1.3 3.2-3 3.2s-3-1.7-3-3.5zm11.5 3H22c-.4 0-1-.2-1-.4-.3 0-.5-.4-.5-.8V7.7h-3.2V9c-.5-.5-1-.8-1.7-1-.6-.3-1.5-.5-2.3-.5-1 0-1.7.2-2.4.5-1 .3-1.6.8-2 1.3-.6.6-1 1.2-1 2-.6.7-.7 1.5-.7 2.3 0 1 0 1.7.4 2.4.2.7.6 1.4 1 2 .6.5 1.2 1 2 1.3.6.3 1.4.5 2.3.5 1 0 1.8-.2 2.5-.6.7-.3 1.2-.8 1.7-1.5.3.6.7 1 1.3 1.5.5.4 1 .6 1.8.6.5 0 1 0 1.5-.2l.5-.2v-2.8z'/%3E%3C/svg%3E") !important;
+  
   &:hover,
   &:focus {
-    background-color: #6a3fa1 !important;
-    color: #fff !important;
+    background-color: #d4d4d4 !important;
+    color: #444 !important;
     border: 0 !important;
     box-shadow: none !important;
+  }
+  
+  &.color-scheme-1,
+  &.color-scheme-2, 
+  &.color-scheme-3 {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 27' width='30' height='27'%3E%3Cpath id='aq-logo-bg' style='fill:%23fff' d='M30 18.4c0 .7-.4 1.4-.8 1.7l-13.6 7H14L.8 20c-.4 0-.8-1-.8-1.5v-10C0 8 .4 7.3.8 7L14 0c.4-.3 1.2-.3 1.6 0l13.6 7c.4.2.8 1 .8 1.6v9.8z'/%3E%3Cpath id='aq-logo-a' style='fill:%23f05023' d='M11 13.7c0-1.8 1.3-3.3 3-3.3s3 1.5 3 3.3c0 1.8-1.3 3.2-3 3.2s-3-1.7-3-3.5zm11.5 3H22c-.4 0-1-.2-1-.4-.3 0-.5-.4-.5-.8V7.7h-3.2V9c-.5-.5-1-.8-1.7-1-.6-.3-1.5-.5-2.3-.5-1 0-1.7.2-2.4.5-1 .3-1.6.8-2 1.3-.6.6-1 1.2-1 2-.6.7-.7 1.5-.7 2.3 0 1 0 1.7.4 2.4.2.7.6 1.4 1 2 .6.5 1.2 1 2 1.3.6.3 1.4.5 2.3.5 1 0 1.8-.2 2.5-.6.7-.3 1.2-.8 1.7-1.5.3.6.7 1 1.3 1.5.5.4 1 .6 1.8.6.5 0 1 0 1.5-.2l.5-.2v-2.8z'/%3E%3C/svg%3E") !important;
+  }
+  
+  // 0: default
+  &.color-scheme-0 {
+    box-shadow: inset 0 0 0 1px #d4d4d4 !important;
+  }
+  
+  // 1: purple
+  &.color-scheme-1 {
+    background-color: #895fc0 !important;
+    color: #fff !important;
+
+    &:hover,
+    &:focus {
+      background-color: #6a3fa1 !important;
+      color: #fff !important;
+    }
+  }
+
+  // 2: orange
+  &.color-scheme-2 {
+    background-color: #f05023 !important;
+    color: #fff !important;
+
+    &:hover,
+    &:focus {
+      background-color: #cd380e !important;
+      color: #fff !important;
+    }
+  }
+  
+  // 3: grey
+  &.color-scheme-3 {
+    background-color: #afb6bb !important;
+    color: #333 !important;
+    
+    &:hover,
+    &:focus {
+      background-color: #919aa1 !important;
+      color: #333 !important;
+    }
+  }
+  
+  // 4: white
+  &.color-scheme-4 {
+    background-color: #fff !important;
+    color: #444 !important;
+    
+    &:hover,
+    &:focus {
+      background-color: #d4d4d4 !important;
+      color: #444 !important;
+    }
+  }
+}
+
+.authentiq-link {
+  display: inline-block;
+  margin-bottom: 8px;
+
+  // 1: purple
+  &.color-scheme-1 {
+    color: #6a3fa1 !important;
+
+    &:hover,
+    &:focus {
+      color: #6a3fa1 !important;
+    }
+  }
+
+  // 2: orange
+  &.color-scheme-2 {
+    color: #f05023 !important;
+
+    &:hover,
+    &:focus {
+      color: #cd380e !important;
+    }
+  }
+  
+  // 3: grey
+  &.color-scheme-3 {
+    color: #afb6bb !important;
+    
+    &:hover,
+    &:focus {
+      color: #919aa1 !important;
+    }
+  }
+  
+  // 4: white
+  &.color-scheme-4 {
+    color: #fff !important;
+
+    &:hover,
+    &:focus {
+      color: #d4d4d4 !important;
+    }
   }
 }

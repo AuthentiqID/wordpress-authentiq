@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: authentiq\n"
-"POT-Creation-Date: 2017-12-17 12:02+0200\n"
-"PO-Revision-Date: 2017-12-17 12:02+0200\n"
+"POT-Creation-Date: 2018-05-21 21:21+0300\n"
+"PO-Revision-Date: 2018-05-21 21:21+0300\n"
 "Last-Translator: \n"
 "Language-Team: Authentiq team <hello@authentiq.com>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -23,7 +23,8 @@ msgstr ""
 
 #: admin/class-authentiq-admin.php:97 admin/class-authentiq-admin.php:98
 #: admin/partials/authentiq-user-profile.php:18
-#: includes/class-authentiq-widget.php:18
+#: includes/class-authentiq-widget.php:18 includes/personal-data-handler.php:15
+#: includes/personal-data-handler.php:94 includes/personal-data-handler.php:110
 msgid "Authentiq"
 msgstr ""
 
@@ -36,7 +37,7 @@ msgid "Only an administrator can configure the Authentiq plugin."
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:17
-msgid "Authentiq configuration page"
+msgid "Authentiq Settings"
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:28
@@ -71,11 +72,13 @@ msgstr ""
 
 #: admin/partials/authentiq-settings.php:130
 #: admin/partials/authentiq-user-profile.php:43
+#: includes/personal-data-handler.php:59
 msgid "Phone number"
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:139
 #: admin/partials/authentiq-user-profile.php:58
+#: includes/personal-data-handler.php:68
 msgid "Address"
 msgstr ""
 
@@ -94,67 +97,171 @@ msgid "Linkedin"
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:177
-msgid "Functionality"
+msgid "Layout"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:182
-msgid "Classic WordPress Login"
+#: admin/partials/authentiq-settings.php:180
+msgid ""
+"Presentation of Authentiq in login and registration forms. See the <a href="
+"\"https://wordpress.demos.authentiq.io/wp-admin/plugins.php\" target=\"_blank"
+"\">plugin page</a> for widget and short code options."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:190
-msgid "Allow"
+#: admin/partials/authentiq-settings.php:187
+#: includes/class-authentiq-widget.php:38
+#: includes/class-authentiq-widget.php:144
+#: public/class-authentiq-public.php:185 public/class-authentiq-public.php:297
+#: public/class-authentiq-woocommerce.php:107
+#: public/class-authentiq-woocommerce.php:163
+msgid "Sign in"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:196
+#: admin/partials/authentiq-settings.php:242
+msgid "Replace"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:197
+#: admin/partials/authentiq-settings.php:243
+msgid "Add button"
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:198
-msgid "all users"
+#: admin/partials/authentiq-settings.php:244
+msgid "Add link"
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:199
+#: admin/partials/authentiq-settings.php:245
+msgid "None"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:204
+msgid "replaces the sign in form with a button."
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:209
+msgid "adds a button in the sign in form."
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:214
+#: admin/partials/authentiq-settings.php:260
+msgid "with text"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:219
+#: admin/partials/authentiq-settings.php:265
+msgid "...or use the Authentiq ID app"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:225
+#: admin/partials/authentiq-settings.php:271
+msgid "does not add a button or link."
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:233
+msgid "Registration"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:250
+msgid "replaces the registration form with a button."
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:255
+msgid "adds a button in the registration form."
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:279
+msgid "Color scheme"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:287
+#: includes/class-authentiq-widget.php:94
+msgid "Default"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:288
+#: includes/class-authentiq-widget.php:95
+msgid "Purple"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:289
+#: includes/class-authentiq-widget.php:96
+msgid "Orange"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:290
+#: includes/class-authentiq-widget.php:97
+msgid "Grey"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:291
+#: includes/class-authentiq-widget.php:98
+msgid "White"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:299
+msgid "Functionality"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:304
+msgid "Classic WordPress Login"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:312
+msgid "Allow"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:320
+msgid "all users"
+msgstr ""
+
+#: admin/partials/authentiq-settings.php:321
 msgid "users without Authentiq ID"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:202
+#: admin/partials/authentiq-settings.php:324
 msgid "to sign in with username and password."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:212
+#: admin/partials/authentiq-settings.php:334
 msgid ""
 "Skip the WordPress login page, and proceed directly to Authentiq sign in."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:219
+#: admin/partials/authentiq-settings.php:341
 msgid "Page after login"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:225
-msgid "no redirect"
+#: admin/partials/authentiq-settings.php:347
+msgid "leave empty to return to last page"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:228
+#: admin/partials/authentiq-settings.php:350
 msgid "for"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:236
+#: admin/partials/authentiq-settings.php:358
 msgid "All users"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:246
+#: admin/partials/authentiq-settings.php:368
 msgid "Domains to filter"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:255
+#: admin/partials/authentiq-settings.php:377
 msgid "Only"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:256
+#: admin/partials/authentiq-settings.php:378
 msgid "No"
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:259
-msgid "Users from the following domains are allowed."
+#: admin/partials/authentiq-settings.php:381
+msgid "users from the following domains are allowed."
 msgstr ""
 
-#: admin/partials/authentiq-settings.php:300
+#: admin/partials/authentiq-settings.php:422
 #: admin/partials/authentiq-user-profile.php:135
 msgid "Please try again."
 msgstr ""
@@ -266,7 +373,7 @@ msgid ""
 "ID to sign in."
 msgstr ""
 
-#: includes/class-authentiq-provider.php:753
+#: includes/class-authentiq-provider.php:754
 msgid ""
 "The Authentiq state parameter can not be verified. This may be due to this "
 "page being cached by another WordPress plugin. Please refresh your page and "
@@ -289,57 +396,89 @@ msgstr ""
 msgid "Login to site"
 msgstr ""
 
-#: includes/class-authentiq-widget.php:38
-#: includes/class-authentiq-widget.php:125
-#: public/class-authentiq-public.php:136 public/class-authentiq-public.php:175
-#: public/class-authentiq-woocommerce.php:92
-#: public/class-authentiq-woocommerce.php:127
-msgid "Sign in"
-msgstr ""
-
 #: includes/class-authentiq-widget.php:44
-#: includes/class-authentiq-widget.php:134
-#: public/class-authentiq-public.php:166
+#: includes/class-authentiq-widget.php:154
+#: public/class-authentiq-public.php:287
 msgid "Link your account"
 msgstr ""
 
 #: includes/class-authentiq-widget.php:50
-#: includes/class-authentiq-widget.php:146
+#: includes/class-authentiq-widget.php:167
 #: public/partials/logged-in-state.php:3
 msgid "Sign out"
 msgstr ""
 
-#: includes/class-authentiq-widget.php:56
+#: includes/class-authentiq-widget.php:62
 msgid "Title:"
 msgstr ""
 
-#: includes/class-authentiq-widget.php:63
+#: includes/class-authentiq-widget.php:69
 msgid "Sign in text:"
 msgstr ""
 
-#: includes/class-authentiq-widget.php:70
+#: includes/class-authentiq-widget.php:76
 msgid "Account linking text:"
 msgstr ""
 
-#: includes/class-authentiq-widget.php:77
+#: includes/class-authentiq-widget.php:83
 msgid "Sign out text:"
 msgstr ""
 
-#: public/class-authentiq-public.php:112 public/class-authentiq-public.php:151
-#: public/class-authentiq-public.php:196
+#: includes/class-authentiq-widget.php:90
+msgid "Color scheme:"
+msgstr ""
+
+#: includes/personal-data-handler.php:48
+msgid "Authentiq ID"
+msgstr ""
+
+#: includes/personal-data-handler.php:62
+msgid "Phone number verified"
+msgstr ""
+
+#: includes/personal-data-handler.php:65
+msgid "Phone number type"
+msgstr ""
+
+#: includes/personal-data-handler.php:72
+msgid "Twitter username"
+msgstr ""
+
+#: includes/personal-data-handler.php:76
+msgid "Facebook username"
+msgstr ""
+
+#: includes/personal-data-handler.php:80
+msgid "LinkedIn username"
+msgstr ""
+
+#: includes/personal-data-handler.php:148
+msgid "Authentiq user data has been removed."
+msgstr ""
+
+#: public/class-authentiq-public.php:151 public/class-authentiq-public.php:272
+#: public/class-authentiq-public.php:320
 msgid "Please visit the Authentiq plugin settings and configure the client."
 msgstr ""
 
-#: public/class-authentiq-public.php:134 public/class-authentiq-public.php:173
+#: public/class-authentiq-public.php:183 public/class-authentiq-public.php:295
 #: public/partials/authentiq-button.php:2
 msgid "Sign in or register"
 msgstr ""
 
-#: public/class-authentiq-woocommerce.php:92
+#: public/class-authentiq-public.php:236
+msgid "Register"
+msgstr ""
+
+#: public/class-authentiq-woocommerce.php:115
 msgid "Get my details"
 msgstr ""
 
-#: public/partials/login-form.php:7
+#: public/partials/login-form.php:8
+msgid "or register with WordPress username"
+msgstr ""
+
+#: public/partials/login-form.php:10
 msgid "or login with WordPress username"
 msgstr ""
 
@@ -352,6 +491,10 @@ msgid "← Login with Authentiq"
 msgstr ""
 
 #: public/partials/render-back-to-authentiq.php:3
+msgid "&larr; Register with Authentiq"
+msgstr ""
+
+#: public/partials/render-back-to-authentiq.php:3
 msgid "&larr; Login with Authentiq"
 msgstr ""
 
@@ -359,7 +502,7 @@ msgstr ""
 msgid "or login with you WordPress user"
 msgstr ""
 
-#: public/partials/woocommerce-checkout.php:9
+#: public/partials/woocommerce-checkout.php:8
 msgid ""
 "Tired of typing your details again? Get Authentiq ID on your phone and fill "
 "forms like this in seconds."

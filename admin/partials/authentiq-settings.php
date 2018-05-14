@@ -14,24 +14,24 @@
 <div class="wrap">
     <h1>
         <div id="icon-themes" class="icon32"></div>
-		<?php esc_html_e('Authentiq configuration page', AUTHENTIQ_LANG); ?>
+        <?php esc_html_e('Authentiq Settings', AUTHENTIQ_LANG); ?>
     </h1>
 
     <hr/>
 
     <form method="post" action="options.php">
-		<?php
-		settings_fields('authentiq_settings');
-		do_settings_sections('authentiq_settings');
-		?>
+        <?php
+        settings_fields('authentiq_settings');
+        do_settings_sections('authentiq_settings');
+        ?>
 
         <h2><?php esc_html_e('Client', AUTHENTIQ_LANG); ?></h2>
 
-		<?php if (!$this->options->is_configured()) : ?>
+        <?php if (!$this->options->is_configured()) : ?>
             <div class="authentiq-configuration-warning" style="background: #fff; margin-top: 15px; padding: 1px 12px;">
 
-				<?php if ($this->options->get('wsl_migration')) {
-					$instructions = __(<<<TXT
+                <?php if ($this->options->get('wsl_migration')) {
+                    $instructions = __(<<<TXT
                         <h4>Update your existing client:</h4>
                         <ol>
                             <li>First go to: <a href="https://dashboard.authentiq.com">Authentiq Dashboard</a> and sign in.</li>
@@ -40,30 +40,30 @@
                             <li>Set the "Backchannel Logout URL" for your application (under advanced options):<br /><strong>%s</strong></li>
                             <li>Click "Save".</li>
                         </ol>
-    
+
                         <p>
                           And you're all set!
                           <br />
                           %s
                         </p>
-    
+
                         <p>
                             P.S.: If you were using WordPress Social Login plugin just for Authentiq, then feel free to deactivate it.
                         </p>
 TXT
-						, AUTHENTIQ_LANG);
+                        , AUTHENTIQ_LANG);
 
-					$configured_button = '<a href="#" id="authentiq-unlink" class="button button-primary">' . __('Done', AUTHENTIQ_LANG) . '</a>';
+                    $configured_button = '<a href="#" id="authentiq-unlink" class="button button-primary">' . __('Done', AUTHENTIQ_LANG) . '</a>';
 
-					printf(
-						$instructions,
-						Authentiq_Provider::get_redirect_url(),
-						Authentiq_Backchannel_Logout::get_post_backchannel_logout_url(),
-						$configured_button
-					);
+                    printf(
+                        $instructions,
+                        Authentiq_Provider::get_redirect_url(),
+                        Authentiq_Backchannel_Logout::get_post_backchannel_logout_url(),
+                        $configured_button
+                    );
 
-				} else {
-					$instructions = __(<<<TXT
+                } else {
+                    $instructions = __(<<<TXT
                         <h4>Register a new client:</h4>
                         <ol>
                             <li>First go to: <a href="https://dashboard.authentiq.com">Authentiq Dashboard</a> and sign in.</li>
@@ -75,22 +75,22 @@ TXT
                             <li>Once registered, paste the created application credentials into the boxes below.</li>
                         </ol>
 TXT
-						, AUTHENTIQ_LANG);
+                        , AUTHENTIQ_LANG);
 
-					printf(
-						$instructions,
-						Authentiq_Provider::get_redirect_url(),
-						Authentiq_Backchannel_Logout::get_post_backchannel_logout_url()
-					);
-				} ?>
+                    printf(
+                        $instructions,
+                        Authentiq_Provider::get_redirect_url(),
+                        Authentiq_Backchannel_Logout::get_post_backchannel_logout_url()
+                    );
+                } ?>
 
             </div>
 
-		<?php else: ?>
+        <?php else: ?>
             <p class="description">
-				<?php _e('Please refer to the <a href="https://dashboard.authentiq.com">Authentiq Dashboard</a> to change your client’s configuration.', AUTHENTIQ_LANG) ?>
+                <?php _e('Please refer to the <a href="https://dashboard.authentiq.com">Authentiq Dashboard</a> to change your client’s configuration.', AUTHENTIQ_LANG) ?>
             </p>
-		<?php endif; ?>
+        <?php endif; ?>
 
         <table class="form-table">
             <tbody>
@@ -100,7 +100,7 @@ TXT
                 </th>
                 <td>
                     <input type="text" name="authentiq_settings[client_id]" id="authentiq_settings[client_id]"
-                           value="<?php echo esc_attr($this->options->get('client_id')); ?>" class="regular-text">
+                           value="<?php esc_attr_e($this->options->get('client_id')); ?>" class="regular-text">
                 </td>
             </tr>
             <tr>
@@ -110,7 +110,7 @@ TXT
                 <td>
                     <input type="password" name="authentiq_settings[client_secret]"
                            id="authentiq_settings[client_secret]"
-                           value="<?php echo esc_attr($this->options->get('client_secret')); ?>"
+                           value="<?php esc_attr_e($this->options->get('client_secret')); ?>"
                            class="regular-text">
                 </td>
             </tr>
@@ -120,13 +120,13 @@ TXT
                 <td>
                     <p class="description"><?php esc_html_e('Additional scopes requested from Authentiq ID on user sign in.', AUTHENTIQ_LANG) ?></p>
 
-					<?php $client_scopes = $this->options->get('client_scopes', array()); ?>
+                    <?php $client_scopes = $this->options->get('client_scopes', array()); ?>
 
                     <fieldset>
                         <label for="authentiq_settings[client_scopes][phone]">
                             <input type="checkbox" name="authentiq_settings[client_scopes][]"
                                    id="authentiq_settings[client_scopes][phone]" value="phone"
-								<?php if (in_array('phone', $client_scopes)) echo ' checked="checked"'; ?>>
+                                <?php if (in_array('phone', $client_scopes)) echo ' checked="checked"'; ?>>
                             <span class="description"><?php esc_html_e('Phone number', AUTHENTIQ_LANG) ?></span>
                         </label>
                     </fieldset>
@@ -135,7 +135,7 @@ TXT
                         <label for="authentiq_settings[client_scopes][address]">
                             <input type="checkbox" name="authentiq_settings[client_scopes][]"
                                    id="authentiq_settings[client_scopes][address]" value="address"
-								<?php if (in_array('address', $client_scopes)) echo ' checked="checked"'; ?>>
+                                <?php if (in_array('address', $client_scopes)) echo ' checked="checked"'; ?>>
                             <span class="description"><?php esc_html_e('Address', AUTHENTIQ_LANG) ?></span>
                         </label>
                     </fieldset>
@@ -145,7 +145,7 @@ TXT
                             <input type="checkbox" name="authentiq_settings[client_scopes][]"
                                    id="authentiq_settings[client_scopes][aq:social:twitter]"
                                    value="aq:social:twitter"
-								<?php if (in_array('aq:social:twitter', $client_scopes)) echo ' checked="checked"'; ?>>
+                                <?php if (in_array('aq:social:twitter', $client_scopes)) echo ' checked="checked"'; ?>>
                             <span class="description"><?php esc_html_e('Twitter', AUTHENTIQ_LANG) ?></span>
                         </label>
                     </fieldset>
@@ -155,7 +155,7 @@ TXT
                             <input type="checkbox" name="authentiq_settings[client_scopes][]"
                                    id="authentiq_settings[client_scopes][aq:social:facebook]"
                                    value="aq:social:facebook"
-								<?php if (in_array('aq:social:facebook', $client_scopes)) echo ' checked="checked"'; ?>>
+                                <?php if (in_array('aq:social:facebook', $client_scopes)) echo ' checked="checked"'; ?>>
                             <span class="description"><?php esc_html_e('Facebook', AUTHENTIQ_LANG) ?></span>
                         </label>
                     </fieldset>
@@ -165,10 +165,132 @@ TXT
                             <input type="checkbox" name="authentiq_settings[client_scopes][]"
                                    id="authentiq_settings[client_scopes][aq:social:linkedin]"
                                    value="aq:social:linkedin"
-								<?php if (in_array('aq:social:linkedin', $client_scopes)) echo ' checked="checked"'; ?>>
+                                <?php if (in_array('aq:social:linkedin', $client_scopes)) echo ' checked="checked"'; ?>>
                             <span class="description"><?php esc_html_e('Linkedin', AUTHENTIQ_LANG) ?></span>
                         </label>
                     </fieldset>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h2><?php esc_html_e('Layout', AUTHENTIQ_LANG) ?></h2>
+
+        <p class="description">
+            <?php _e('Presentation of Authentiq in login and registration forms. See the <a href="https://wordpress.demos.authentiq.io/wp-admin/plugins.php" target="_blank">plugin page</a> for widget and short code options.', AUTHENTIQ_LANG) ?>
+        </p>
+
+        <table class="form-table">
+            <tbody>
+            <tr>
+                <th scope="row">
+                    <label for="authentiq_settings[layout_signin_form]"><?php esc_html_e('Sign in', AUTHENTIQ_LANG) ?></label>
+                </th>
+                <td>
+                    <?php $layout_signin_form = $this->options->get('layout_signin_form'); ?>
+
+                    <label for="authentiq_settings[layout_signin_form]">
+                        <select name="authentiq_settings[layout_signin_form]"
+                                id="authentiq_settings[layout_signin_form]"
+                                class="authentiq-layout-options">
+                            <option value="0" <?php selected($layout_signin_form, 0); ?>><?php esc_html_e('Replace', AUTHENTIQ_LANG) ?></option>
+                            <option value="1" <?php selected($layout_signin_form, 1); ?>><?php esc_html_e('Add button', AUTHENTIQ_LANG) ?></option>
+                            <option value="2" <?php selected($layout_signin_form, 2); ?>><?php esc_html_e('Add link', AUTHENTIQ_LANG) ?></option>
+                            <option value="3" <?php selected($layout_signin_form, 3); ?>><?php esc_html_e('None', AUTHENTIQ_LANG) ?></option>
+                        </select>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-0"
+                              style="<?php echo $layout_signin_form == 0 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('replaces the sign in form with a button.', AUTHENTIQ_LANG) ?>
+                        </span>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-1"
+                              style="<?php echo $layout_signin_form == 1 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('adds a button in the sign in form.', AUTHENTIQ_LANG) ?>
+                        </span>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-2"
+                              style="<?php echo $layout_signin_form == 2 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('with text', AUTHENTIQ_LANG) ?>
+
+                            <input type="text" name="authentiq_settings[layout_signin_form_link_text]"
+                                    id="authentiq_settings[layout_signin_form_link_text]"
+                                    value="<?php esc_attr_e($this->options->get('layout_signin_form_link_text')); ?>"
+                                    placeholder="<?php esc_html_e('...or use the Authentiq ID app', AUTHENTIQ_LANG) ?>"
+                                    class="regular-text">
+                        </span>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-3"
+                              style="<?php echo $layout_signin_form == 3 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('does not add a button or link.', AUTHENTIQ_LANG) ?>
+                        </span>
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    <label for="authentiq_settings[layout_registration_form]"><?php esc_html_e('Registration', AUTHENTIQ_LANG) ?></label>
+                </th>
+                <td>
+                    <?php $layout_registration_form = $this->options->get('layout_registration_form'); ?>
+
+                    <label for="authentiq_settings[layout_registration_form]">
+                        <select name="authentiq_settings[layout_registration_form]"
+                                id="authentiq_settings[layout_registration_form]"
+                                class="authentiq-layout-options">
+                            <option value="0" <?php selected($layout_registration_form, 0); ?>><?php esc_html_e('Replace', AUTHENTIQ_LANG) ?></option>
+                            <option value="1" <?php selected($layout_registration_form, 1); ?>><?php esc_html_e('Add button', AUTHENTIQ_LANG) ?></option>
+                            <option value="2" <?php selected($layout_registration_form, 2); ?>><?php esc_html_e('Add link', AUTHENTIQ_LANG) ?></option>
+                            <option value="3" <?php selected($layout_registration_form, 3); ?>><?php esc_html_e('None', AUTHENTIQ_LANG) ?></option>
+                        </select>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-0"
+                              style="<?php echo $layout_registration_form == 0 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('replaces the registration form with a button.', AUTHENTIQ_LANG) ?>
+                        </span>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-1"
+                              style="<?php echo $layout_registration_form == 1 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('adds a button in the registration form.', AUTHENTIQ_LANG) ?>
+                        </span>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-2"
+                              style="<?php echo $layout_registration_form == 2 ? '' : 'display: none;' ?>">
+                                <?php esc_html_e('with text', AUTHENTIQ_LANG) ?>
+
+                                <input type="text" name="authentiq_settings[layout_registration_form_link_text]"
+                                id="authentiq_settings[layout_registration_form_link_text]"
+                                value="<?php esc_attr_e($this->options->get('layout_registration_form_link_text')); ?>"
+                                placeholder="<?php esc_html_e('...or use the Authentiq ID app', AUTHENTIQ_LANG) ?>"
+                                class="regular-text">
+                        </span>
+
+                        <span class="authentiq-layout-option authentiq-layout-option-3"
+                              style="<?php echo $layout_registration_form == 3 ? '' : 'display: none;' ?>">
+                            <?php esc_html_e('does not add a button or link.', AUTHENTIQ_LANG) ?>
+                        </span>
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    <label for="authentiq_settings[button_color_scheme]"><?php esc_html_e('Color scheme', AUTHENTIQ_LANG) ?></label>
+                </th>
+                <td>
+                    <?php $button_color_scheme = $this->options->get('button_color_scheme'); ?>
+
+                    <label for="authentiq_settings[button_color_scheme]">
+                        <select name="authentiq_settings[button_color_scheme]"
+                                id="authentiq_settings[button_color_scheme]">
+                            <option value="0" <?php selected($button_color_scheme, 0); ?>><?php esc_html_e('Default', AUTHENTIQ_LANG) ?></option>
+                            <option value="1" <?php selected($button_color_scheme, 1); ?>><?php esc_html_e('Purple', AUTHENTIQ_LANG) ?></option>
+                            <option value="2" <?php selected($button_color_scheme, 2); ?>><?php esc_html_e('Orange', AUTHENTIQ_LANG) ?></option>
+                            <option value="3" <?php selected($button_color_scheme, 3); ?>><?php esc_html_e('Grey', AUTHENTIQ_LANG) ?></option>
+                            <option value="4" <?php selected($button_color_scheme, 4); ?>><?php esc_html_e('White', AUTHENTIQ_LANG) ?></option>
+                        </select>
+                    </label>
                 </td>
             </tr>
             </tbody>
@@ -185,12 +307,12 @@ TXT
                     <label for="authentiq_settings[classic_wp_login]">
                         <input type="checkbox" name="authentiq_settings[classic_wp_login]"
                                id="authentiq_settings[classic_wp_login]" value="1"
-							<?php checked($this->options->get('classic_wp_login'), 1); ?>>
+                            <?php checked($this->options->get('classic_wp_login'), 1); ?>>
 
-						<?php esc_html_e('Allow', AUTHENTIQ_LANG) ?>
+                        <?php esc_html_e('Allow', AUTHENTIQ_LANG) ?>
                     </label>
 
-					<?php $classic_wp_login_for = $this->options->get('classic_wp_login_for'); ?>
+                    <?php $classic_wp_login_for = $this->options->get('classic_wp_login_for'); ?>
 
                     <label for="authentiq_settings[classic_wp_login_for]">
                         <select name="authentiq_settings[classic_wp_login_for]"
@@ -199,7 +321,7 @@ TXT
                             <option value="1" <?php selected($classic_wp_login_for, 1); ?>><?php esc_html_e('users without Authentiq ID', AUTHENTIQ_LANG) ?></option>
                         </select>
 
-						<?php esc_html_e('to sign in with username and password.', AUTHENTIQ_LANG) ?>
+                        <?php esc_html_e('to sign in with username and password.', AUTHENTIQ_LANG) ?>
                     </label>
 
                     <br/>
@@ -207,9 +329,9 @@ TXT
                     <label for="authentiq_settings[auto_login]">
                         <input type="checkbox" name="authentiq_settings[auto_login]"
                                id="authentiq_settings[auto_login]" value="1"
-							<?php checked($this->options->get('auto_login'), 1); ?>>
+                            <?php checked($this->options->get('auto_login'), 1); ?>>
 
-						<?php esc_html_e('Skip the WordPress login page, and proceed directly to Authentiq sign in.', AUTHENTIQ_LANG) ?>
+                        <?php esc_html_e('Skip the WordPress login page, and proceed directly to Authentiq sign in.', AUTHENTIQ_LANG) ?>
                     </label>
                 </td>
             </tr>
@@ -221,11 +343,11 @@ TXT
                 <td valign="center">
                     <input type="text" name="authentiq_settings[default_login_redirection]"
                            id="authentiq_settings[default_login_redirection]"
-                           value="<?php echo esc_attr($this->options->get('default_login_redirection')); ?>"
+                           value="<?php esc_attr_e($this->options->get('default_login_redirection')); ?>"
                            placeholder="<?php esc_html_e('leave empty to return to last page', AUTHENTIQ_LANG) ?>"
                            class="regular-text">
 
-					<?php esc_html_e('for', AUTHENTIQ_LANG) ?>
+                    <?php esc_html_e('for', AUTHENTIQ_LANG) ?>
 
                     <?php $default_login_redirection_applies_to = $this->options->get('default_login_redirection_applies_to'); ?>
 
@@ -247,7 +369,7 @@ TXT
                 </th>
                 <td>
 
-					<?php $filter_user_domains_condition = $this->options->get('filter_user_domains_condition'); ?>
+                    <?php $filter_user_domains_condition = $this->options->get('filter_user_domains_condition'); ?>
 
                     <label for="authentiq_settings[filter_user_domains_condition]" class="description">
                         <select name="authentiq_settings[filter_user_domains_condition]"
@@ -256,7 +378,7 @@ TXT
                             <option value="1" <?php selected($filter_user_domains_condition, 1); ?>><?php esc_html_e('No', AUTHENTIQ_LANG) ?></option>
                         </select>
 
-						<?php esc_html_e('Users from the following domains are allowed.', AUTHENTIQ_LANG) ?>
+                        <?php esc_html_e('users from the following domains are allowed.', AUTHENTIQ_LANG) ?>
                     </label>
 
                     <br/>
@@ -271,9 +393,9 @@ TXT
             </tbody>
         </table>
 
-		<?php
-		submit_button();
-		?>
+        <?php
+        submit_button();
+        ?>
     </form>
 </div>
 
@@ -303,3 +425,13 @@ TXT
       });
     </script>
 <?php endif; ?>
+
+<script>
+  jQuery(document).ready(function () {
+    jQuery('.authentiq-layout-options').on('change', function() {
+      var parent = jQuery(this).closest('label');
+      parent.find('.authentiq-layout-option').hide();
+      parent.find('.authentiq-layout-option-' + this.value).show();
+    });
+  });
+</script>

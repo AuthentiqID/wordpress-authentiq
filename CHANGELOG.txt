@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.0.5 - 2018-05-20 =
+
+* Feature - Add layout settings.
+* Feature - Add button color scheme settings.
+* Feature - Add GDPR Compliance.
+
 = 1.0.4 - 2018-04-25 =
 
 * Tweak - OAuth2 `state` parameter stored as session cookie. Fixes Issue #1.
