@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: authentiq\n"
-"POT-Creation-Date: 2018-05-21 21:21+0300\n"
-"PO-Revision-Date: 2018-05-21 21:21+0300\n"
+"POT-Creation-Date: 2018-05-21 22:32+0300\n"
+"PO-Revision-Date: 2018-05-21 22:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: Authentiq team <hello@authentiq.com>\n"
 "Language: en_GB\n"
@@ -103,8 +103,8 @@ msgstr ""
 #: admin/partials/authentiq-settings.php:180
 msgid ""
 "Presentation of Authentiq in login and registration forms. See the <a href="
-"\"https://wordpress.demos.authentiq.io/wp-admin/plugins.php\" target=\"_blank"
-"\">plugin page</a> for widget and short code options."
+"\"https://wordpress.org/plugins/authentiq/\" target=\"_blank\">plugin page</"
+"a> for widget and short code options."
 msgstr ""
 
 #: admin/partials/authentiq-settings.php:187
@@ -499,7 +499,7 @@ msgid "&larr; Login with Authentiq"
 msgstr ""
 
 #: public/partials/woocommerce-account.php:9
-msgid "or login with you WordPress user"
+msgid "or login with your WordPress user"
 msgstr ""
 
 #: public/partials/woocommerce-checkout.php:8

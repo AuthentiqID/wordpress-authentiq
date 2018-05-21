@@ -177,7 +177,7 @@ TXT
         <h2><?php esc_html_e('Layout', AUTHENTIQ_LANG) ?></h2>
 
         <p class="description">
-            <?php _e('Presentation of Authentiq in login and registration forms. See the <a href="https://wordpress.demos.authentiq.io/wp-admin/plugins.php" target="_blank">plugin page</a> for widget and short code options.', AUTHENTIQ_LANG) ?>
+            <?php _e('Presentation of Authentiq in login and registration forms. See the <a href="https://wordpress.org/plugins/authentiq/" target="_blank">plugin page</a> for widget and short code options.', AUTHENTIQ_LANG) ?>
         </p>
 
         <table class="form-table">

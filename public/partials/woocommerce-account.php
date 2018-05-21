@@ -6,7 +6,7 @@
 		<?php if ($allow_classic_wp_login) { ?>
             <div class="other-methods">
                 <a href="<?php echo add_query_arg(AUTHENTIQ_LOGIN_FORM_QUERY_PARAM, true); ?>">
-					<?php esc_html_e('or login with you WordPress user', AUTHENTIQ_LANG) ?>
+					<?php esc_html_e('or login with your WordPress user', AUTHENTIQ_LANG) ?>
                 </a>
             </div>
 		<?php } ?>
