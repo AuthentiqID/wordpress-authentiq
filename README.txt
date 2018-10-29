@@ -2,7 +2,7 @@
 Contributors: authentiq, stannie, ziogaschr
 Tags: passwordless, two-factor, two factor, 2 step authentication, 2 factor, 2FA, admin, ios, android, authentication, encryption, harden, iphone, log in, login, mfa, mobile, multifactor, multi factor, oauth, password, passwords, phone, secure, security, smartphone, single sign on, ssl, sso, strong authentication, tfa, two factor authentication, two step, wp-admin, wp-login, xmlrpc, xml-rpc, clef
 Requires at least: 4.6
-Tested up to: 4.9.6
+Tested up to: 5.0
 Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
