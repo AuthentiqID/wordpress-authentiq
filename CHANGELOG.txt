@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.0.6 - 2019-10-17 =
+
+* Bugfix - Fix typo in lost password flow.
+
 = 1.0.5 - 2018-05-20 =
 
 * Feature - Add layout settings.

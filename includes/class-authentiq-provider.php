@@ -701,7 +701,7 @@ class Authentiq_Provider
 		global $wpdb;
 
 		// if it's not allowed already by another plugin, then follow the rules set
-		if (!allow) {
+		if (!$allow) {
 			return false;
 		}
 
